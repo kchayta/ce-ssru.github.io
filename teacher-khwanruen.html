@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ประวัติอาจารย์ - วิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยราชภัฏสวนสุนันทา</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Sarabun', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .teacher-profile-bg {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 30px;
+            height: calc(100% - 30px);
+            width: 2px;
+            background: #e2e8f0;
+        }
+        
+        .publication-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid #3b82f6;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="glass-nav fixed w-full z-50 py-4 px-6 shadow-sm">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://lh6.googleusercontent.com/proxy/s_GqWRcItR2bXBCbpXmVFRRFrdl0Z04KcJaQs5DEfy8WkIG9N_aQr0UEB45suWC_r_S02nkhHZr2iTiPNTfZ8Es8nejrP-yWj7LuqUtabgYIZBMxt15fW8GcQ8xKgH1MUtTYEK4vfqcLznF7XFa9Api4nptJs5eZ" alt="โลโก้ มร.สส" class="h-12 mr-4">
+                <span class="text-white text-xl font-bold">วิศวกรรมคอมพิวเตอร์</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="indexv2.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">หน้าแรก</a>
+                <a href="program.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">หลักสูตร</a>
+                <a href="teacher.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">คณะอาจารย์</a>
+                <a href="thesis.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">งานวิจัย</a>
+                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">สมัครเรียน</a>
+                <a href="contact.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">ติดต่อเรา</a>
+            </div>
+            
+            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden bg-white rounded-lg mt-2 py-2 shadow-xl" id="mobile-menu">
+            <a href="indexv2.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">หน้าแรก</a>
+            <a href="program.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">หลักสูตร</a>
+            <a href="teacher.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">คณะอาจารย์</a>
+            <a href="thesis.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">งานวิจัย</a>
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">สมัครเรียน</a>
+            <a href="contact.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">ติดต่อเรา</a>
+        </div>
+    </nav>
+
+    <!-- Teacher Profile Section -->
+    <section class="pt-32 pb-16 teacher-profile-bg">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Back button -->
+            <a href="teacher.html" class="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6">
+                <i class="fas fa-arrow-left mr-2"></i> กลับสู่หน้าคณะอาจารย์
+            </a>
+            
+            <!-- Loading state -->
+            <div id="loading" class="flex justify-center my-12">
+                <div class="loading-spinner"></div>
+            </div>
+            
+            <!-- Teacher Profile Content -->
+            <div id="teacher-profile-content" class="hidden fade-in">
+                <!-- Teacher Header -->
+                <div class="flex flex-col md:flex-row gap-8 mb-12">
+                    <div class="w-full md:w-1/3 lg:w-1/4">
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                            <img id="teacher-image" src="https://eit.ssru.ac.th/useruploads/images/20220721/05b31217c5d99828fd151f6ddc51b09c102803dd.png" alt="อาจารย์" class="w-full h-auto object-cover">
+                            <div class="p-6">
+                                <h2 id="teacher-name" class="text-xl font-bold mb-2">ผู้ช่วยศาสตราจารย์ ดร.ขวัญเรือน รัศมี</h2>
+                                <div id="teacher-position" class="text-blue-600 font-medium mb-3">ผู้ช่วยศาสตราจารย์</div>
+                                
+                                <div class="mb-4">
+                                    <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">ข้อมูลติดต่อ</h3>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center">
+                                            <i class="fas fa-envelope text-gray-500 mr-2 w-5"></i>
+                                            <span id="teacher-email">kwanruan.ru@ssru.ac.th</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-phone-alt text-gray-500 mr-2 w-5"></i>
+                                            <span id="teacher-phone">021601438</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-map-marker-alt text-gray-500 mr-2 w-5"></i>
+                                            <span id="teacher-office">www.elfit.ssru.ac.th/kwanruan_ru</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">เวลาปรึกษา</h3>
+                                    <p id="teacher-consultation" class="text-sm">วันจันทร์-พุธ 13:00-16:00 น.</p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">สาขาวิชา</h3>
+                                    <p id="teacher-department" class="text-sm">วิศวกรรมคอมพิวเตอร์</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full md:w-2/3 lg:w-3/4">
+                        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                            <h2 class="text-2xl font-bold mb-6">ประวัติ</h2>
+                            <div id="teacher-bio" class="prose max-w-none">
+                                <p>ex**ผู้ช่วยศาสตราจารย์ ดร.ขวัญเรือน รัศมี จบการศึกษาระดับปริญญาเอก สาขาวิศวกรรมซอฟต์แวร์ จากมหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี มีประสบการณ์ในการวิจัยและพัฒนาระบบซอฟต์แวร์มากว่า 15 ปี</p>
+                                <p class="mt-4">ex**ปัจจุบันดำรงตำแหน่งหัวหน้าสาขาวิชาวิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยราชภัฏสวนสุนันทา</p>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <div class="bg-white rounded-lg shadow-md p-6">
+                                <h3 class="text-xl font-bold mb-4 flex items-center">
+                                    <i class="fas fa-graduation-cap text-blue-500 mr-3"></i> การศึกษา
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="timeline-item relative pl-10">
+                                        <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                                            <i class="fas fa-university text-xs"></i>
+                                        </div>
+                                        <h4 class="font-semibold">วศ.ม. (วิศวกรรมสารสนเทศ)</h4>
+                                        <p class="text-sm text-gray-600">สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง</p>
+                                        <p class="text-xs text-gray-500">2559</p>
+                                    </div>
+                                    <div class="timeline-item relative pl-10">
+                                        <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                                            <i class="fas fa-university text-xs"></i>
+                                        </div>
+                                        <h4 class="font-semibold">วธ.ม. (การจัดการทั่วไป)</h4>
+                                        <p class="text-sm text-gray-600">มหาวิทยาลัยราชภัฏพระนคร</p>
+                                        <p class="text-xs text-gray-500">2547</p>
+                                    </div>
+                                    <div class="timeline-item relative pl-10">
+                                        <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                                            <i class="fas fa-university text-xs"></i>
+                                        </div>
+                                        <h4 class="font-semibold">วศ.บ. (วิศวกรรมคอมพิวเตอร์)</h4>
+                                        <p class="text-sm text-gray-600">มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี</p>
+                                        <p class="text-xs text-gray-500">2545</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg shadow-md p-6">
+                                <h3 class="text-xl font-bold mb-4 flex items-center">
+                                    <i class="fas fa-briefcase text-blue-500 mr-3"></i>ex**ประวัติการทำงาน
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="timeline-item relative pl-10">
+                                        <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                                            <i class="fas fa-building text-xs"></i>
+                                        </div>
+                                        <h4 class="font-semibold">ผู้ช่วยศาสตราจารย์</h4>
+                                        <p class="text-sm text-gray-600">มหาวิทยาลัยราชภัฏสวนสุนันทา</p>
+                                        <p class="text-xs text-gray-500">2559 - ปัจจุบัน</p>
+                                    </div>
+                                    <div class="timeline-item relative pl-10">
+                                        <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                                            <i class="fas fa-building text-xs"></i>
+                                        </div>
+                                        <h4 class="font-semibold">อาจารย์</h4>
+                                        <p class="text-sm text-gray-600">มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี</p>
+                                        <p class="text-xs text-gray-500">2550 - 2559</p>
+                                    </div>
+                                    <div class="timeline-item relative pl-10">
+                                        <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                                            <i class="fas fa-building text-xs"></i>
+                                        </div>
+                                        <h4 class="font-semibold">วิศวกรซอฟต์แวร์</h4>
+                                        <p class="text-sm text-gray-600">บริษัท ซอฟต์เทค จำกัด</p>
+                                        <p class="text-xs text-gray-500">2546 - 2548</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Expertise and Research -->
+                <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                    <h2 class="text-2xl font-bold mb-6">ex**ความเชี่ยวชาญและงานวิจัย</h2>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold mb-4 flex items-center">
+                            <i class="fas fa-star text-yellow-500 mr-3"></i> ความเชี่ยวชาญ
+                        </h3>
+                        <div id="teacher-expertise" class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">ปัญญาประดิษฐ์</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">การเรียนรู้ของเครื่อง</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">วิศวกรรมซอฟต์แวร์</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">การประมวลผลภาษาธรรมชาติ</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">ระบบแนะนำ</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 flex items-center">
+                            <i class="fas fa-flask text-purple-500 mr-3"></i> ผลงานวิจัยล่าสุด
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="publication-card bg-gray-50 hover:bg-gray-100 p-4 rounded-lg transition duration-300">
+                                <h4 class="font-semibold text-blue-700">ระบบแนะนำหนังสืออิเล็กทรอนิกส์ด้วยเทคนิคการเรียนรู้เชิงลึก</h4>
+                                <p class="text-sm text-gray-600 mt-1">International Journal of Computer Science and Information Security, 2565</p>
+                                <div class="flex items-center mt-2 text-sm text-gray-500">
+                                    <i class="fas fa-link mr-2"></i>
+                                    <a href="#" class="text-blue-600 hover:underline">DOI: 10.12345/ijcsis.2022.1234</a>
+                                </div>
+                            </div>
+                            <div class="publication-card bg-gray-50 hover:bg-gray-100 p-4 rounded-lg transition duration-300">
+                                <h4 class="font-semibold text-blue-700">เฟรมเวิร์กสำหรับการวิเคราะห์ความรู้สึกจากข้อความภาษาไทย</h4>
+                                <p class="text-sm text-gray-600 mt-1">การประชุมวิชาการวิศวกรรมคอมพิวเตอร์แห่งชาติ ครั้งที่ 25, 2564</p>
+                                <div class="flex items-center mt-2 text-sm text-gray-500">
+                                    <i class="fas fa-link mr-2"></i>
+                                    <a href="#" class="text-blue-600 hover:underline">ดูบทความ</a>
+                                </div>
+                            </div>
+                            <div class="publication-card bg-gray-50 hover:bg-gray-100 p-4 rounded-lg transition duration-300">
+                                <h4 class="font-semibold text-blue-700">การปรับปรุงอัลกอริทึมการจัดตารางสอนด้วยเทคนิคพันธุกรรม</h4>
+                                <p class="text-sm text-gray-600 mt-1">วารสารวิศวกรรมศาสตร์ มหาวิทยาลัยราชภัฏสวนสุนันทา, 2563</p>
+                                <div class="flex items-center mt-2 text-sm text-gray-500">
+                                    <i class="fas fa-link mr-2"></i>
+                                    <a href="#" class="text-blue-600 hover:underline">อ่านออนไลน์</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-right">
+                            <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">
+                                ดูผลงานวิจัยทั้งหมด <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Courses -->
+                <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                    <h2 class="text-2xl font-bold mb-6">ex**รายวิชาที่สอน</h2>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">รหัสวิชา</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ชื่อวิชา</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ระดับ</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ภาคการศึกษา</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-600">CPE101</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">พื้นฐานการเขียนโปรแกรม</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">ปริญญาตรี</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">1/2565</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-600">CPE301</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">ปัญญาประดิษฐ์เบื้องต้น</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">ปริญญาตรี</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">2/2565</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-600">CPE501</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">การเรียนรู้ของเครื่องสำหรับวิศวกรรมซอฟต์แวร์</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">ปริญญาโท</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">1/2565</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-600">CPE601</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">หัวข้อพิเศษในระบบอัจฉริยะ</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">ปริญญาเอก</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">2/2564</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">วิศวกรรมคอมพิวเตอร์</h3>
+                    <p class="text-gray-400 mb-4">คณะวิศวกรรมศาสตร์และเทคโนโลยีอุตสาหกรรม</p>
+                    <p class="text-gray-400">มหาวิทยาลัยราชภัฏสวนสุนันทา</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ลิงก์ด่วน</h3>
+                    <ul class="space-y-2">
+                        <li><a href="indexv2.html" class="text-gray-400 hover:text-white transition">หน้าแรก</a></li>
+                        <li><a href="program.html" class="text-gray-400 hover:text-white transition">หลักสูตร</a></li>
+                        <li><a href="teacher.html" class="text-gray-400 hover:text-white transition">คณะอาจารย์</a></li>
+                        <li><a href="thesis.html" class="text-gray-400 hover:text-white transition">งานวิจัย</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">สมัครเรียน</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ติดต่อเรา</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <span>1 ถนนอู่ทองนอก เขตดุสิต กรุงเทพมหานคร 10300</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3"></i>
+                            <span>+66 2 123 4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3"></i>
+                            <span>ce@ssru.ac.th</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ติดตามเรา</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-400 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400 mb-2">สมัครรับจดหมายข่าว</p>
+                    <div class="flex">
+                        <input type="email" placeholder="อีเมลของคุณ" class="bg-gray-800 text-white px-4 py-2 rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
+                        <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2566 ภาควิชาวิศวกรรมคอมพิวเตอร์ มร.สส. สงวนลิขสิทธิ์</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">นโยบายความเป็นส่วนตัว</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">ข้อกำหนดการใช้งาน</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">การเข้าถึง</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Simulate loading teacher data
+        document.addEventListener('DOMContentLoaded', function() {
+            // In a real implementation, you would fetch the teacher data based on URL parameter
+            // For this example, we'll use mock data
+            setTimeout(() => {
+                const loading = document.getElementById('loading');
+                const content = document.getElementById('teacher-profile-content');
+                
+                loading.style.display = 'none';
+                content.style.display = 'block';
+                
+                // Get teacher ID from URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const teacherId = urlParams.get('id');
+                
+                // In a real app, you would fetch teacher data based on ID
+                // For now we'll just use the mock data
+                
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

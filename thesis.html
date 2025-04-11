@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>งานวิจัย - วิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยราชภัฏสวนสุนันทา</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Sarabun', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .research-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .research-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-left-color: #3b82f6;
+        }
+        
+        .year-tab {
+            transition: all 0.3s ease;
+        }
+        
+        .year-tab.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="glass-nav fixed w-full z-50 py-4 px-6 shadow-sm">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://lh3.googleusercontent.com/proxy/qeSkpKtrp_1A_o4-9UQWzYqaIKURcD8nBgzuSMWkVTnZ3cDCeyIx01fzKmRej-4mtlw5_j_YBb5vAXA68ROwVvW0onr0bkaRhPiyEPahYMpdm0Ye00olEWhb--BIau2k68QPXmQQexx6VZywmneXKRLgfV1j61wKjwPQ67I" alt="โลโก้ มร.สส" class="h-12 mr-4">
+                <span class="text-white text-xl font-bold">วิศวกรรมคอมพิวเตอร์</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="indexv2.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">หน้าแรก</a>
+                <a href="program.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">หลักสูตร</a>
+                <a href="teacher.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">คณะอาจารย์</a>
+                <a href="thesis.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">งานวิจัย</a>
+                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">สมัครเรียน</a>
+                <a href="contact.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">ติดต่อเรา</a>
+            </div>
+            
+            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden bg-white rounded-lg mt-2 py-2 shadow-xl" id="mobile-menu">
+            <a href="indexv2.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">หน้าแรก</a>
+            <a href="program.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">หลักสูตร</a>
+            <a href="teacher.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">คณะอาจารย์</a>
+            <a href="thesis.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">งานวิจัย</a>
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">สมัครเรียน</a>
+            <a href="contact.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">ติดต่อเรา</a>
+        </div>
+    </nav>
+
+    <!-- Research Header -->
+    <section class="pt-32 pb-20 bg-gradient-to-r from-blue-900 to-purple-900 text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">งานวิจัยและนวัตกรรม</h1>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto">ผลงานวิจัยของคณาจารย์และนักศึกษา ภาควิชาวิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยราชภัฏสวนสุนันทา</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Content -->
+    <section class="py-16 px-6 max-w-7xl mx-auto">
+        <!-- Year Filter Tabs -->
+        <div class="mb-12 overflow-x-auto">
+            <div class="flex space-x-2 pb-2">
+                <button class="year-tab px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300 active" data-year="all">ทั้งหมด</button>
+                <button class="year-tab px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-year="68">2568</button>
+                <button class="year-tab px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-year="67">2567</button>
+                <button class="year-tab px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-year="66">2566</button>
+                <button class="year-tab px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-year="65">2565</button>
+                <button class="year-tab px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-year="64">2564</button>
+                <button class="year-tab px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-year="63">2563</button>
+                <button class="year-tab px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-year="62">2562</button>
+                <button class="year-tab px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-year="61">2561</button>
+                <button class="year-tab px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-year="60">2560</button>
+                <button class="year-tab px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-year="59">2559</button>
+                <button class="year-tab px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-year="58">2558</button>
+                <button class="year-tab px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-year="57">2557</button>
+                <button class="year-tab px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-year="56">2556</button>
+                <button class="year-tab px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-year="55">2555</button>
+                <button class="year-tab px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-year="54">2554</button>
+                <button class="year-tab px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-year="53">2553</button>
+            </div>
+        </div>
+
+        <!-- Research Projects by Year -->
+        <div class="space-y-12">
+            <!-- Year 2568 -->
+            <div class="research-year" data-year="68">
+                <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-gray-200">ปีการศึกษา 2568</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">AI/ML</span>
+                            <span class="text-gray-500 text-sm">มกราคม 2568</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">ระบบประมวลผลภาษาธรรมชาติสำหรับการวิเคราะห์ความรู้สึกจากรีวิวอาหารไทย</h3>
+                        <p class="text-gray-600 mb-4">การพัฒนาระบบประมวลผลภาษาธรรมชาติแบบลึกสำหรับวิเคราะห์ความรู้สึกจากรีวิวอาหารไทยบนแพลตฟอร์มออนไลน์</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Deep Learning</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">NLP</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Sentiment Analysis</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-user mr-2"></i>
+                            <span>ผศ.ดร.สมชาย ใจดี และคณะ</span>
+                        </div>
+                    </div>
+                    
+                    <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">IoT</span>
+                            <span class="text-gray-500 text-sm">มีนาคม 2568</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">ระบบเกษตรอัจฉริยะด้วย IoT สำหรับการปลูกสตรอว์เบอร์รีในพื้นที่สูง</h3>
+                        <p class="text-gray-600 mb-4">การออกแบบและพัฒนาระบบตรวจสอบและควบคุมสภาพแวดล้อมในโรงเรือนปลูกสตรอว์เบอร์รีแบบเรียลไทม์</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Smart Farming</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Sensor Network</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Automation</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-user mr-2"></i>
+                            <span>รศ.ดร.สุภาพร เทพทอง และคณะ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Year 2567 -->
+            <div class="research-year" data-year="67">
+                <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-gray-200">ปีการศึกษา 2567</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">Blockchain</span>
+                            <span class="text-gray-500 text-sm">มิถุนายน 2567</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">ระบบตรวจสอบย้อนกลับผลิตภัณฑ์เกษตรด้วยเทคโนโลยีบล็อกเชน</h3>
+                        <p class="text-gray-600 mb-4">การพัฒนาระบบตรวจสอบย้อนกลับผลิตภัณฑ์เกษตรอินทรีย์แบบกระจายศูนย์เพื่อสร้างความน่าเชื่อถือให้กับผู้บริโภค</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Smart Contract</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Supply Chain</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Decentralized</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-user mr-2"></i>
+                            <span>ดร.วิศวะ เก่งรอบด้าน และคณะ</span>
+                        </div>
+                    </div>
+                    
+                    <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-red-100 text-red-800 text-sm font-medium px-3 py-1 rounded-full">Cybersecurity</span>
+                            <span class="text-gray-500 text-sm">กันยายน 2567</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">เฟรมเวิร์กการตรวจจับการโจมตีแบบ Zero-day ในระบบ IoT</h3>
+                        <p class="text-gray-600 mb-4">การพัฒนากรอบการทำงานสำหรับการตรวจจับและป้องกันการโจมตีแบบที่ไม่เคยพบมาก่อนในอุปกรณ์ IoT</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Anomaly Detection</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Machine Learning</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Network Security</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-user mr-2"></i>
+                            <span>ผศ.ดร.ปลอดภัย ทุกสถานการณ์ และคณะ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Year 2566 -->
+            <div class="research-year" data-year="66">
+                <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-gray-200">ปีการศึกษา 2566</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">Computer Vision</span>
+                            <span class="text-gray-500 text-sm">มกราคม 2566</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">ระบบตรวจสอบคุณภาพผลไม้ด้วยการเรียนรู้เชิงลึก</h3>
+                        <p class="text-gray-600 mb-4">การพัฒนาระบบตรวจสอบคุณภาพและจัดเกรดผลไม้สดด้วยเทคโนโลยีการประมวลผลภาพและปัญญาประดิษฐ์</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Image Processing</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Quality Control</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">CNN</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-user mr-2"></i>
+                            <span>ดร.ชาญวิทย์ ภาพคมชัด และคณะ</span>
+                        </div>
+                    </div>
+                    
+                    <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">Big Data</span>
+                            <span class="text-gray-500 text-sm">เมษายน 2566</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">ระบบพยากรณ์การแพร่ระบาดของโรคด้วยข้อมูลขนาดใหญ่</h3>
+                        <p class="text-gray-600 mb-4">การวิเคราะห์และพยากรณ์การแพร่กระจายของโรคติดต่อโดยใช้เทคนิคการเรียนรู้ของเครื่องกับข้อมูลขนาดใหญ่</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Epidemiology</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Time Series</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Predictive Modeling</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-user mr-2"></i>
+                            <span>รศ.ดร.วิทยา ข้อมูลลึก และคณะ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Year 2565 -->
+            <div class="research-year" data-year="65">
+                <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-gray-200">ปีการศึกษา 2565</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-pink-100 text-pink-800 text-sm font-medium px-3 py-1 rounded-full">Robotics</span>
+                            <span class="text-gray-500 text-sm">สิงหาคม 2565</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">หุ่นยนต์บริการสำหรับโรงพยาบาลด้วยระบบนำทางอัจฉริยะ</h3>
+                        <p class="text-gray-600 mb-4">การพัฒนาหุ่นยนต์บริการสำหรับส่งยาและเวชภัณฑ์ในโรงพยาบาลด้วยระบบนำทางอัตโนมัติและหลีกเลี่ยงสิ่งกีดขวาง</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Autonomous</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">SLAM</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Healthcare</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-user mr-2"></i>
+                            <span>ผศ.ดร.ยนต์ ยนตรกรรม และคณะ</span>
+                        </div>
+                    </div>
+                    
+                    <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">Cloud Computing</span>
+                            <span class="text-gray-500 text-sm">พฤศจิกายน 2565</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">สถาปัตยกรรมคลาวด์แบบไฮบริดสำหรับองค์กรการศึกษา</h3>
+                        <p class="text-gray-600 mb-4">การออกแบบและประเมินประสิทธิภาพของสถาปัตยกรรมคลาวด์แบบไฮบริดที่เหมาะสมสำหรับสถาบันการศึกษาในประเทศไทย</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Hybrid Cloud</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Cost Optimization</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Performance</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-user mr-2"></i>
+                            <span>ดร.เมฆา คลาวด์เนทีฟ และคณะ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Year 2564 -->
+            <div class="research-year" data-year="64">
+                <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-gray-200">ปีการศึกษา 2564</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">AR/VR</span>
+                            <span class="text-gray-500 text-sm">มีนาคม 2564</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">ระบบการเรียนรู้ประวัติศาสตร์ด้วยเทคโนโลยีความเป็นจริงเสริม</h3>
+                        <p class="text-gray-600 mb-4">การพัฒนาระบบการเรียนรู้ประวัติศาสตร์ไทยผ่านเทคโนโลยี AR ที่ผสานวัตถุเสมือนกับสภาพแวดล้อมจริง</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Augmented Reality</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Education</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Interactive</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-user mr-2"></i>
+                            <span>ผศ.ดร.เสมือน จริงมาก และคณะ</span>
+                        </div>
+                    </div>
+                    
+                    <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-red-100 text-red-800 text-sm font-medium px-3 py-1 rounded-full">Edge Computing</span>
+                            <span class="text-gray-500 text-sm">กรกฎาคม 2564</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">เฟรมเวิร์กการประมวลผลแบบ Edge สำหรับเมืองอัจฉริยะ</h3>
+                        <p class="text-gray-600 mb-4">การพัฒนากรอบการทำงานสำหรับการประมวลผลแบบ Edge Computing ที่เหมาะสมสำหรับการประยุกต์ใช้ในเมืองอัจฉริยะ</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Low Latency</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Distributed</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Smart City</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-user mr-2"></i>
+                            <span>ดร.เอ็ดจ์ คอมพิวเตอร์ และคณะ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Older Years (Collapsible) -->
+            <div class="research-year" data-year="older">
+                <div class="text-center">
+                    <button id="show-older-research" class="px-6 py-3 bg-gray-200 hover:bg-gray-300 rounded-full font-medium transition">
+                        <i class="fas fa-chevron-down mr-2"></i>แสดงงานวิจัยปีก่อนหน้า (2553-2563)
+                    </button>
+                </div>
+                
+                <div id="older-research" class="hidden mt-8">
+                    <!-- Year 2563 -->
+                    <div class="research-year" data-year="63">
+                        <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-gray-200">ปีการศึกษา 2563</h2>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">Data Science</span>
+                                    <span class="text-gray-500 text-sm">พฤษภาคม 2563</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">ระบบแนะนำเส้นทางท่องเที่ยวด้วยการวิเคราะห์ข้อมูลขนาดใหญ่</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนาระบบแนะนำเส้นทางท่องเที่ยวแบบ personalized โดยใช้เทคนิค data mining และ machine learning</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ดร.วิเคราะห์ ข้อมูลลึก และคณะ</span>
+                                </div>
+                            </div>
+                            
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">NLP</span>
+                                    <span class="text-gray-500 text-sm">ธันวาคม 2563</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">ระบบสรุปความข้อความข่าวภาษาไทยด้วยการเรียนรู้เชิงลึก</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนาระบบสรุปความข้อความข่าวภาษาไทยอัตโนมัติโดยใช้โมเดล Transformer-based</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ผศ.ดร.สรุปความ ใจดี และคณะ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Year 2562 -->
+                    <div class="research-year" data-year="62">
+                        <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-gray-200">ปีการศึกษา 2562</h2>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">IoT</span>
+                                    <span class="text-gray-500 text-sm">กุมภาพันธ์ 2562</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">ระบบตรวจสอบคุณภาพน้ำแบบเรียลไทม์ด้วยเซ็นเซอร์ IoT</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนาระบบตรวจสอบคุณภาพน้ำในแม่น้ำเจ้าพระยาแบบเรียลไทม์ด้วยเครือข่ายเซ็นเซอร์ไร้สาย</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>รศ.ดร.น้ำใส ใจสะอาด และคณะ</span>
+                                </div>
+                            </div>
+                            
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">Computer Vision</span>
+                                    <span class="text-gray-500 text-sm">ตุลาคม 2562</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">ระบบตรวจจับใบหน้าสำหรับการเช็คชื่ออัตโนมัติ</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนาระบบเช็คชื่ออัตโนมัติด้วยเทคโนโลยีการรู้จำใบหน้าเพื่อใช้ในห้องเรียนอัจฉริยะ</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ดร.ใบหน้า คมชัด และคณะ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Year 2561 -->
+                    <div class="research-year" data-year="61">
+                        <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-gray-200">ปีการศึกษา 2561</h2>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-red-100 text-red-800 text-sm font-medium px-3 py-1 rounded-full">Cybersecurity</span>
+                                    <span class="text-gray-500 text-sm">มิถุนายน 2561</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">ระบบตรวจจับการบุกรุกเครือข่ายด้วยการเรียนรู้ของเครื่อง</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนาระบบตรวจจับการบุกรุกเครือข่ายคอมพิวเตอร์โดยใช้เทคนิค machine learning แบบ ensemble</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ผศ.ดร.ปลอดภัย ทุกสถานการณ์ และคณะ</span>
+                                </div>
+                            </div>
+                            
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">Big Data</span>
+                                    <span class="text-gray-500 text-sm">กันยายน 2561</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">ระบบวิเคราะห์แนวโน้มตลาดหุ้นไทยด้วยข้อมูลขนาดใหญ่</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนาระบบวิเคราะห์และพยากรณ์แนวโน้มตลาดหุ้นไทยโดยใช้เทคนิค data mining และ sentiment analysis</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ดร.หุ้นดี มีกำไร และคณะ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Year 2560 -->
+                    <div class="research-year" data-year="60">
+                        <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-gray-200">ปีการศึกษา 2560</h2>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-pink-100 text-pink-800 text-sm font-medium px-3 py-1 rounded-full">Robotics</span>
+                                    <span class="text-gray-500 text-sm">เมษายน 2560</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">หุ่นยนต์บริการสำหรับร้านอาหารด้วยระบบนำทางอัตโนมัติ</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนาหุ่นยนต์บริการอาหารและเครื่องดื่มสำหรับร้านอาหารด้วยเทคโนโลยี SLAM และ computer vision</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ผศ.ดร.หุ่นยนต์ ทำงานดี และคณะ</span>
+                                </div>
+                            </div>
+                            
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">Cloud Computing</span>
+                                    <span class="text-gray-500 text-sm">พฤศจิกายน 2560</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">สถาปัตยกรรมคลาวด์แบบผสมผสานสำหรับ SMEs</h3>
+                                <p class="text-gray-600 mb-4">การออกแบบและประเมินประสิทธิภาพของสถาปัตยกรรมคลาวด์แบบผสมผสานที่เหมาะสมสำหรับธุรกิจ SMEs ในประเทศไทย</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ดร.เมฆา คลาวด์เนทีฟ และคณะ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Year 2559 -->
+                    <div class="research-year" data-year="59">
+                        <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-gray-200">ปีการศึกษา 2559</h2>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">AR/VR</span>
+                                    <span class="text-gray-500 text-sm">มีนาคม 2559</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">ระบบการเรียนรู้กายวิภาคด้วยเทคโนโลยีความเป็นจริงเสมือน</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนาระบบการเรียนรู้กายวิภาคศาสตร์มนุษย์ด้วยเทคโนโลยี VR สำหรับนักศึกษาแพทย์</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ผศ.ดร.เสมือน จริงมาก และคณะ</span>
+                                </div>
+                            </div>
+                            
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-red-100 text-red-800 text-sm font-medium px-3 py-1 rounded-full">Edge Computing</span>
+                                    <span class="text-gray-500 text-sm">กรกฎาคม 2559</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">เฟรมเวิร์กการประมวลผลแบบ Edge สำหรับ IoT</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนากรอบการทำงานสำหรับการประมวลผลแบบ Edge Computing ที่เหมาะสมสำหรับอุปกรณ์ IoT จำกัดทรัพยากร</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ดร.เอ็ดจ์ คอมพิวเตอร์ และคณะ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Year 2558 -->
+                    <div class="research-year" data-year="58">
+                        <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-gray-200">ปีการศึกษา 2558</h2>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">Data Science</span>
+                                    <span class="text-gray-500 text-sm">พฤษภาคม 2558</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">ระบบวิเคราะห์ความเสี่ยงโรคไม่ติดต่อด้วยการเรียนรู้ของเครื่อง</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนาระบบประเมินความเสี่ยงโรคไม่ติดต่อเรื้อรังโดยใช้เทคนิค machine learning และข้อมูลสุขภาพ</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ดร.วิเคราะห์ ข้อมูลลึก และคณะ</span>
+                                </div>
+                            </div>
+                            
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">NLP</span>
+                                    <span class="text-gray-500 text-sm">ธันวาคม 2558</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">ระบบแปลภาษาไทย-อังกฤษด้วยการเรียนรู้เชิงลึก</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนาระบบแปลภาษาอัตโนมัติภาษาไทย-อังกฤษโดยใช้โมเดล neural network แบบ sequence-to-sequence</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ผศ.ดร.แปลภาษา ใจดี และคณะ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Year 2557 -->
+                    <div class="research-year" data-year="57">
+                        <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-gray-200">ปีการศึกษา 2557</h2>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">IoT</span>
+                                    <span class="text-gray-500 text-sm">กุมภาพันธ์ 2557</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">ระบบตรวจสอบสิ่งแวดล้อมในอาคารด้วยเซ็นเซอร์ไร้สาย</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนาระบบตรวจสอบอุณหภูมิ ความชื้น และคุณภาพอากาศในอาคารด้วยเครือข่ายเซ็นเซอร์ไร้สาย</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>รศ.ดร.สิ่งแวดล้อม ดีมาก และคณะ</span>
+                                </div>
+                            </div>
+                            
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">Computer Vision</span>
+                                    <span class="text-gray-500 text-sm">ตุลาคม 2557</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">ระบบตรวจจับวัตถุสำหรับรถยนต์ไร้คนขับ</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนาระบบตรวจจับวัตถุและสิ่งกีดขวางสำหรับรถยนต์ไร้คนขับด้วยเทคโนโลยี computer vision</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ดร.มองเห็น ดีมาก และคณะ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Year 2556 -->
+                    <div class="research-year" data-year="56">
+                        <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-gray-200">ปีการศึกษา 2556</h2>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-red-100 text-red-800 text-sm font-medium px-3 py-1 rounded-full">Cybersecurity</span>
+                                    <span class="text-gray-500 text-sm">มิถุนายน 2556</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">ระบบตรวจจับมัลแวร์ด้วยเทคนิคการวิเคราะห์พฤติกรรม</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนาระบบตรวจจับมัลแวร์แบบใหม่โดยใช้เทคนิคการวิเคราะห์พฤติกรรมและการเรียนรู้ของเครื่อง</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ผศ.ดร.ปลอดภัย ทุกสถานการณ์ และคณะ</span>
+                                </div>
+                            </div>
+                            
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">Big Data</span>
+                                    <span class="text-gray-500 text-sm">กันยายน 2556</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">ระบบวิเคราะห์พฤติกรรมผู้บริโภคด้วยข้อมูลขนาดใหญ่</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนาระบบวิเคราะห์และพยากรณ์พฤติกรรมผู้บริโภคจากข้อมูลการซื้อขายออนไลน์ขนาดใหญ่</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ดร.ผู้บริโภค ใจดี และคณะ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Year 2555 -->
+                    <div class="research-year" data-year="55">
+                        <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-gray-200">ปีการศึกษา 2555</h2>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-pink-100 text-pink-800 text-sm font-medium px-3 py-1 rounded-full">Robotics</span>
+                                    <span class="text-gray-500 text-sm">เมษายน 2555</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">หุ่นยนต์บริการสำหรับผู้สูงอายุด้วยระบบนำทางอัตโนมัติ</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนาหุ่นยนต์บริการช่วยเหลือผู้สูงอายุในบ้านพักด้วยเทคโนโลยีการนำทางอัตโนมัติและปฏิสัมพันธ์กับมนุษย์</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ผศ.ดร.หุ่นยนต์ ทำงานดี และคณะ</span>
+                                </div>
+                            </div>
+                            
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">Cloud Computing</span>
+                                    <span class="text-gray-500 text-sm">พฤศจิกายน 2555</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">สถาปัตยกรรมคลาวด์สำหรับธุรกิจขนาดเล็กและกลาง</h3>
+                                <p class="text-gray-600 mb-4">การออกแบบและประเมินประสิทธิภาพของสถาปัตยกรรมคลาวด์ที่เหมาะสมสำหรับธุรกิจขนาดเล็กและกลางในประเทศไทย</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ดร.เมฆา คลาวด์เนทีฟ และคณะ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Year 2554 -->
+                    <div class="research-year" data-year="54">
+                        <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-gray-200">ปีการศึกษา 2554</h2>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">AR/VR</span>
+                                    <span class="text-gray-500 text-sm">มีนาคม 2554</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">ระบบการเรียนรู้ประวัติศาสตร์ไทยด้วยเทคโนโลยีความเป็นจริงเสริม</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนาระบบการเรียนรู้ประวัติศาสตร์ไทยผ่านเทคโนโลยี AR ที่ผสานวัตถุเสมือนกับสภาพแวดล้อมจริง</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ผศ.ดร.เสมือน จริงมาก และคณะ</span>
+                                </div>
+                            </div>
+                            
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-red-100 text-red-800 text-sm font-medium px-3 py-1 rounded-full">Edge Computing</span>
+                                    <span class="text-gray-500 text-sm">กรกฎาคม 2554</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">เฟรมเวิร์กการประมวลผลแบบ Edge สำหรับอุปกรณ์เคลื่อนที่</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนากรอบการทำงานสำหรับการประมวลผลแบบ Edge Computing ที่เหมาะสมสำหรับอุปกรณ์เคลื่อนที่</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ดร.เอ็ดจ์ คอมพิวเตอร์ และคณะ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Year 2553 -->
+                    <div class="research-year" data-year="53">
+                        <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-gray-200">ปีการศึกษา 2553</h2>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">Data Science</span>
+                                    <span class="text-gray-500 text-sm">พฤษภาคม 2553</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">ระบบวิเคราะห์ความเสี่ยงสุขภาพด้วยการเรียนรู้ของเครื่อง</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนาระบบประเมินความเสี่ยงสุขภาพโดยใช้เทคนิค machine learning และข้อมูลสุขภาพ</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ดร.วิเคราะห์ ข้อมูลลึก และคณะ</span>
+                                </div>
+                            </div>
+                            
+                            <div class="research-card bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">NLP</span>
+                                    <span class="text-gray-500 text-sm">ธันวาคม 2553</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">ระบบสรุปความข่าวภาษาไทยอัตโนมัติ</h3>
+                                <p class="text-gray-600 mb-4">การพัฒนาระบบสรุปความข่าวภาษาไทยอัตโนมัติโดยใช้เทคนิคการประมวลผลภาษาธรรมชาติ</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>ผศ.ดร.สรุปความ ใจดี และคณะ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Stats -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">สถิติงานวิจัย</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">ผลงานวิจัยของภาควิชาวิศวกรรมคอมพิวเตอร์ตั้งแต่ปี 2553-2568</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-5xl font-bold text-blue-600 mb-3">16</div>
+                    <div class="text-gray-600">ปีที่ผ่านมา</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-5xl font-bold text-purple-600 mb-3">128</div>
+                    <div class="text-gray-600">โครงการวิจัย</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-5xl font-bold text-green-600 mb-3">45</div>
+                    <div class="text-gray-600">อาจารย์นักวิจัย</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-5xl font-bold text-red-600 mb-3">32</div>
+                    <div class="text-gray-600">ความร่วมมือกับองค์กร</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">วิศวกรรมคอมพิวเตอร์</h3>
+                    <p class="text-gray-400 mb-4">คณะวิศวกรรมศาสตร์และเทคโนโลยีอุตสาหกรรม</p>
+                    <p class="text-gray-400">มหาวิทยาลัยราชภัฏสวนสุนันทา</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ลิงก์ด่วน</h3>
+                    <ul class="space-y-2">
+                        <li><a href="indexv2.html" class="text-gray-400 hover:text-white transition">หน้าแรก</a></li>
+                        <li><a href="program.html" class="text-gray-400 hover:text-white transition">หลักสูตร</a></li>
+                        <li><a href="teacher.html" class="text-gray-400 hover:text-white transition">คณะอาจารย์</a></li>
+                        <li><a href="thesis.html" class="text-gray-400 hover:text-white transition">งานวิจัย</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">สมัครเรียน</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ติดต่อเรา</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <span>1 ถนนอู่ทองนอก เขตดุสิต กรุงเทพมหานคร 10300</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3"></i>
+                            <span>+66 2 123 4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3"></i>
+                            <span>ce@ssru.ac.th</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ติดตามเรา</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-400 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400 mb-2">สมัครรับจดหมายข่าว</p>
+                    <div class="flex">
+                        <input type="email" placeholder="อีเมลของคุณ" class="bg-gray-800 text-white px-4 py-2 rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
+                        <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2568 ภาควิชาวิศวกรรมคอมพิวเตอร์ มร.สส. สงวนลิขสิทธิ์</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">นโยบายความเป็นส่วนตัว</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">ข้อกำหนดการใช้งาน</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">การเข้าถึง</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Year filter tabs
+        const yearTabs = document.querySelectorAll('.year-tab');
+        const researchYears = document.querySelectorAll('.research-year:not([data-year="older"])');
+        
+        yearTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                yearTabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                const year = this.dataset.year;
+                
+                if (year === 'all') {
+                    // Show all research years
+                    researchYears.forEach(section => {
+                        section.style.display = 'block';
+                    });
+                } else {
+                    // Hide all research years first
+                    researchYears.forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    // Show only selected year
+                    document.querySelector(`.research-year[data-year="${year}"]`).style.display = 'block';
+                }
+                
+                // Scroll to first visible research section
+                document.querySelector('.research-year[style="display: block;"]').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Show older research toggle
+        const showOlderBtn = document.getElementById('show-older-research');
+        const olderResearch = document.getElementById('older-research');
+        
+        showOlderBtn.addEventListener('click', function() {
+            olderResearch.classList.toggle('hidden');
+            
+            if (olderResearch.classList.contains('hidden')) {
+                this.innerHTML = '<i class="fas fa-chevron-down mr-2"></i>แสดงงานวิจัยปีก่อนหน้า (2553-2563)';
+            } else {
+                this.innerHTML = '<i class="fas fa-chevron-up mr-2"></i>ซ่อนงานวิจัยปีก่อนหน้า';
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

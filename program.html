@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หลักสูตรปริญญาตรี - วิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยราชภัฏสวนสุนันทา</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Sarabun', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .program-tab.active {
+            border-bottom: 3px solid #3b82f6;
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        
+        .course-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .course-card:hover {
+            border-left-color: #3b82f6;
+            transform: translateX(5px);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3b82f6;
+            border: 4px solid #bfdbfe;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="glass-nav fixed w-full z-50 py-4 px-6 shadow-sm">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://lh3.googleusercontent.com/proxy/qeSkpKtrp_1A_o4-9UQWzYqaIKURcD8nBgzuSMWkVTnZ3cDCeyIx01fzKmRej-4mtlw5_j_YBb5vAXA68ROwVvW0onr0bkaRhPiyEPahYMpdm0Ye00olEWhb--BIau2k68QPXmQQexx6VZywmneXKRLgfV1j61wKjwPQ67I" alt="โลโก้ มร.สส" class="h-12 mr-4">
+                <span class="text-white text-xl font-bold">วิศวกรรมคอมพิวเตอร์</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="indexv2.html" class="text-white hover:text-blue-300 transition">หน้าแรก</a>
+                <div class="relative group">
+                    <a href="program.html" id="menuButton" class="text-white hover:text-blue-300 flex items-center transition">
+                        หลักสูตร <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </a>
+                    <div id="menuDropdown" class="absolute hidden bg-white rounded-md shadow-lg mt-2 py-2 w-48">
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">ปริญญาตรี</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">ปริญญาโท</a>
+                        <a href="thesis.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">งานวิจัย</a>
+                    </div>
+                </div>
+                <a href="teacher.html" class="text-white hover:text-blue-300 transition">คณะอาจารย์</a>
+                <a href="thesis.html" class="text-white hover:text-blue-300 transition">งานวิจัย</a>
+                <a href="#" class="text-white hover:text-blue-300 transition">สมัครเรียน</a>
+                <a href="contact.html" class="text-white hover:text-blue-300 transition">ติดต่อเรา</a>
+            </div>
+            
+            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden bg-white rounded-lg mt-2 py-2 shadow-xl" id="mobile-menu">
+            <a href="indexv2.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">หน้าแรก</a>
+            <a href="program.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">หลักสูตร</a>
+            <a href="teacher.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">คณะอาจารย์</a>
+            <a href="thesis.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">งานวิจัย</a>
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">สมัครเรียน</a>
+            <a href="contact.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">ติดต่อเรา</a>
+        </div>
+    </nav>
+
+    <!-- Program Header -->
+    <section class="pt-32 pb-20 bg-gradient-to-r from-blue-900 to-purple-900 text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end">
+                <div class="mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">หลักสูตรวิศวกรรมคอมพิวเตอร์ <span class="gradient-text">บัณฑิต</span></h1>
+                    <p class="text-xl text-blue-200 max-w-3xl">หลักสูตร 4 ปี ที่เน้นการสร้างวิศวกรคอมพิวเตอร์มืออาชีพพร้อมทักษะทั้งด้านฮาร์ดแวร์และซอฟต์แวร์</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 text-gray-800 w-full md:w-auto">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-graduation-cap text-blue-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm text-gray-500">ระดับปริญญา</div>
+                            <div class="font-bold">ปริญญาตรี (วศ.บ.)</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-clock text-purple-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm text-gray-500">ระยะเวลาเรียน</div>
+                            <div class="font-bold">4 ปี (8 ภาคการศึกษา)</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="bg-green-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-language text-green-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm text-gray-500">ภาษา</div>
+                            <div class="font-bold">ไทย (บางรายวิชาเป็นภาษาอังกฤษ)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Tabs -->
+    <section class="py-8 bg-white shadow-sm sticky top-0 z-30">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex overflow-x-auto space-x-8 pb-2">
+                <a href="#overview" class="program-tab whitespace-nowrap py-2 px-1 active">ภาพรวมหลักสูตร</a>
+                <a href="#curriculum" class="program-tab whitespace-nowrap py-2 px-1">โครงสร้างหลักสูตร</a>
+                <a href="#specializations" class="program-tab whitespace-nowrap py-2 px-1">สาขาย่อย</a>
+                <a href="#careers" class="program-tab whitespace-nowrap py-2 px-1">โอกาสทางอาชีพ</a>
+                <a href="#admission" class="program-tab whitespace-nowrap py-2 px-1">การรับสมัคร</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Overview -->
+    <section id="overview" class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row gap-12">
+            <div class="md:w-2/3">
+                <h2 class="text-3xl font-bold mb-6">ภาพรวมหลักสูตร</h2>
+                <div class="prose max-w-none">
+                    <p class="text-lg mb-6">หลักสูตรวิศวกรรมคอมพิวเตอร์บัณฑิต มหาวิทยาลัยราชภัฏสวนสุนันทา เป็นหลักสูตร 4 ปี ที่ออกแบบมาเพื่อผลิตวิศวกรคอมพิวเตอร์ที่มีความรู้ความสามารถทั้งด้านฮาร์ดแวร์และซอฟต์แวร์ สามารถประยุกต์ใช้ความรู้เพื่อแก้ปัญหาในโลกจริงได้อย่างมีประสิทธิภาพ</p>
+                    
+                    <h3 class="text-xl font-bold mt-8 mb-4">วัตถุประสงค์ของหลักสูตร</h3>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                            <span>ผลิตบัณฑิตที่มีความรู้ความสามารถด้านวิศวกรรมคอมพิวเตอร์ทั้งทฤษฎีและปฏิบัติ</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                            <span>พัฒนาทักษะการคิดวิเคราะห์และการแก้ปัญหาอย่างเป็นระบบ</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                            <span>ส่งเสริมความคิดสร้างสรรค์และนวัตกรรมทางเทคโนโลยี</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                            <span>ปลูกฝังจรรยาบรรณวิชาชีพและความรับผิดชอบต่อสังคม</span>
+                        </li>
+                    </ul>
+                    
+                    <h3 class="text-xl font-bold mt-8 mb-4">จุดเด่นของหลักสูตร</h3>
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-blue-50 p-6 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-blue-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-laptop-code text-blue-600"></i>
+                                </div>
+                                <h4 class="font-bold">การเรียนรู้แบบลงมือปฏิบัติ</h4>
+                            </div>
+                            <p class="text-gray-700">เน้นการเรียนผ่านโครงการจริงและห้องปฏิบัติการที่ทันสมัย</p>
+                        </div>
+                        <div class="bg-purple-50 p-6 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-purple-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-briefcase text-purple-600"></i>
+                                </div>
+                                <h4 class="font-bold">ความร่วมมือกับอุตสาหกรรม</h4>
+                            </div>
+                            <p class="text-gray-700">ร่วมมือกับบริษัทชั้นนำในการจัดฝึกงานและโครงการพิเศษ</p>
+                        </div>
+                        <div class="bg-green-50 p-6 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-green-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-chalkboard-teacher text-green-600"></i>
+                                </div>
+                                <h4 class="font-bold">คณาจารย์ผู้เชี่ยวชาญ</h4>
+                            </div>
+                            <p class="text-gray-700">เรียนรู้จากอาจารย์ที่มีประสบการณ์ทั้งทางวิชาการและอุตสาหกรรม</p>
+                        </div>
+                        <div class="bg-yellow-50 p-6 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-yellow-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-globe-asia text-yellow-600"></i>
+                                </div>
+                                <h4 class="font-bold">มาตรฐานสากล</h4>
+                            </div>
+                            <p class="text-gray-700">หลักสูตรได้รับการรับรองจากสภาวิศวกรและสอดคล้องกับมาตรฐานสากล</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="md:w-1/3">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden sticky top-32">
+                    <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4">
+                        <h3 class="font-bold text-lg">ข้อมูลหลักสูตรโดยย่อ</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-6">
+                            <h4 class="font-bold mb-2 text-gray-700">ชื่อปริญญา</h4>
+                            <p class="text-gray-900">วิศวกรรมศาสตรบัณฑิต (วิศวกรรมคอมพิวเตอร์)</p>
+                            <p class="text-gray-600 text-sm">Bachelor of Engineering (Computer Engineering)</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold mb-2 text-gray-700">จำนวนหน่วยกิต</h4>
+                            <p class="text-gray-900">ไม่น้อยกว่า 145 หน่วยกิต</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold mb-2 text-gray-700">ค่าเล่าเรียนโดยประมาณ</h4>
+                            <p class="text-gray-900">25,000 - 30,000 บาท/ภาคการศึกษา</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold mb-2 text-gray-700">ระยะเวลาการศึกษา</h4>
+                            <p class="text-gray-900">4 ปี (ปกติ)</p>
+                            <p class="text-gray-600 text-sm">สามารถสำเร็จการศึกษาได้ใน 3.5 ปี (กรณีเรียนภาคฤดูร้อน)</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold mb-2 text-gray-700">ภาษา</h4>
+                            <p class="text-gray-900">ภาษาไทย (บางรายวิชาเป็นภาษาอังกฤษ)</p>
+                        </div>
+                        
+                        <a href="#admission" class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-lg font-medium transition">
+                            ดูรายละเอียดการรับสมัคร
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Structure -->
+    <section id="curriculum" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">โครงสร้างหลักสูตร</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">หลักสูตรวิศวกรรมคอมพิวเตอร์บัณฑิต ประกอบด้วย 145 หน่วยกิต แบ่งออกเป็นหมวดวิชาต่างๆ ดังนี้</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="text-5xl font-bold text-blue-600 mb-4">30</div>
+                    <h3 class="text-xl font-bold mb-3">วิชาศึกษาทั่วไป</h3>
+                    <p class="text-gray-600 mb-4">พัฒนาทักษะพื้นฐานและความรู้ทั่วไปที่จำเป็นสำหรับการเป็นบัณฑิตที่สมบูรณ์</p>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-blue-500 text-xs mt-2 mr-2"></i>
+                            <span>วิชาสังคมศาสตร์และมนุษยศาสตร์</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-blue-500 text-xs mt-2 mr-2"></i>
+                            <span>วิชาวิทยาศาสตร์และคณิตศาสตร์</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-blue-500 text-xs mt-2 mr-2"></i>
+                            <span>วิชาภาษาและการสื่อสาร</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="text-5xl font-bold text-purple-600 mb-4">45</div>
+                    <h3 class="text-xl font-bold mb-3">วิชาเฉพาะด้าน</h3>
+                    <p class="text-gray-600 mb-4">สร้างพื้นฐานทางวิศวกรรมที่แข็งแกร่งสำหรับการเรียนในระดับสูงต่อไป</p>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-purple-500 text-xs mt-2 mr-2"></i>
+                            <span>คณิตศาสตร์วิศวกรรม</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-purple-500 text-xs mt-2 mr-2"></i>
+                            <span>ฟิสิกส์วิศวกรรม</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-purple-500 text-xs mt-2 mr-2"></i>
+                            <span>พื้นฐานการเขียนโปรแกรม</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="text-5xl font-bold text-green-600 mb-4">65</div>
+                    <h3 class="text-xl font-bold mb-3">วิชาเอก</h3>
+                    <p class="text-gray-600 mb-4">เจาะลึกความรู้เฉพาะทางด้านวิศวกรรมคอมพิวเตอร์ทั้งด้านฮาร์ดแวร์และซอฟต์แวร์</p>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-green-500 text-xs mt-2 mr-2"></i>
+                            <span>สถาปัตยกรรมคอมพิวเตอร์</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-green-500 text-xs mt-2 mr-2"></i>
+                            <span>ระบบปฏิบัติการ</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-green-500 text-xs mt=2 mr-2"></i>
+                            <span>เครือข่ายคอมพิวเตอร์</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4">
+                    <h3 class="font-bold text-lg">แผนการศึกษาแนะนำ</h3>
+                </div>
+                <div class="p-6">
+                    <div class="relative">
+                        <!-- Year 1 -->
+                        <div class="mb-12 pl-12 relative timeline-item">
+                            <div class="bg-blue-50 rounded-lg p-6 shadow-sm">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h4 class="text-xl font-bold text-blue-800">ปีที่ 1</h4>
+                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">36 หน่วยกิต</span>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h5 class="font-semibold mb-2 text-gray-700">ภาคการศึกษาที่ 1</h5>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="course-card pl-3 py-1">คณิตศาสตร์วิศวกรรม 1</li>
+                                            <li class="course-card pl-3 py-1">ฟิสิกส์วิศวกรรม 1</li>
+                                            <li class="course-card pl-3 py-1">พื้นฐานการเขียนโปรแกรม</li>
+                                            <li class="course-card pl-3 py-1">ภาษาอังกฤษเพื่อการสื่อสาร</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold mb-2 text-gray-700">ภาคการศึกษาที่ 2</h5>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="course-card pl-3 py-1">คณิตศาสตร์วิศวกรรม 2</li>
+                                            <li class="course-card pl-3 py-1">ฟิสิกส์วิศวกรรม 2</li>
+                                            <li class="course-card pl-3 py-1">โครงสร้างข้อมูลและอัลกอริทึม</li>
+                                            <li class="course-card pl-3 py-1">การเขียนโปรแกรมเชิงวัตถุ</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Year 2 -->
+                        <div class="mb-12 pl-12 relative timeline-item">
+                            <div class="bg-purple-50 rounded-lg p-6 shadow-sm">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h4 class="text-xl font-bold text-purple-800">ปีที่ 2</h4>
+                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">38 หน่วยกิต</span>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h5 class="font-semibold mb-2 text-gray-700">ภาคการศึกษาที่ 1</h5>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="course-card pl-3 py-1">วงจรไฟฟ้าและอิเล็กทรอนิกส์</li>
+                                            <li class="course-card pl-3 py-1">ระบบดิจิทัล</li>
+                                            <li class="course-card pl-3 py-1">โครงสร้างข้อมูลขั้นสูง</li>
+                                            <li class="course-card pl-3 py-1">คณิตศาสตร์ไม่ต่อเนื่อง</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold mb-2 text-gray-700">ภาคการศึกษาที่ 2</h5>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="course-card pl-3 py-1">สถาปัตยกรรมคอมพิวเตอร์</li>
+                                            <li class="course-card pl-3 py-1">ระบบปฏิบัติการ</li>
+                                            <li class="course-card pl-3 py-1">ฐานข้อมูล</li>
+                                            <li class="course-card pl-3 py-1">วิศวกรรมซอฟต์แวร์</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Year 3 -->
+                        <div class="mb-12 pl-12 relative timeline-item">
+                            <div class="bg-green-50 rounded-lg p-6 shadow-sm">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h4 class="text-xl font-bold text-green-800">ปีที่ 3</h4>
+                                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">36 หน่วยกิต</span>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h5 class="font-semibold mb-2 text-gray-700">ภาคการศึกษาที่ 1</h5>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="course-card pl-3 py-1">เครือข่ายคอมพิวเตอร์</li>
+                                            <li class="course-card pl-3 py-1">การออกแบบระบบฝังตัว</li>
+                                            <li class="course-card pl-3 py-1">การวิเคราะห์และออกแบบระบบ</li>
+                                            <li class="course-card pl-3 py-1">วิชาเลือกสาขา 1</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold mb-2 text-gray-700">ภาคการศึกษาที่ 2</h5>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="course-card pl-3 py-1">ความมั่นคงปลอดภัยระบบคอมพิวเตอร์</li>
+                                            <li class="course-card pl-3 py-1">ปัญญาประดิษฐ์</li>
+                                            <li class="course-card pl-3 py-1">วิชาเลือกสาขา 2</li>
+                                            <li class="course-card pl-3 py-1">วิชาเลือกสาขา 3</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Year 4 -->
+                        <div class="pl-12 relative timeline-item">
+                            <div class="bg-yellow-50 rounded-lg p-6 shadow-sm">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h4 class="text-xl font-bold text-yellow-800">ปีที่ 4</h4>
+                                    <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">35 หน่วยกิต</span>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h5 class="font-semibold mb-2 text-gray-700">ภาคการศึกษาที่ 1</h5>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="course-card pl-3 py-1">การจัดการโครงการซอฟต์แวร์</li>
+                                            <li class="course-card pl-3 py-1">วิชาเลือกสาขา 4</li>
+                                            <li class="course-card pl-3 py-1">วิชาเลือกเสรี 1</li>
+                                            <li class="course-card pl-3 py-1">เตรียมฝึกประสบการณ์วิชาชีพ</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold mb-2 text-gray-700">ภาคการศึกษาที่ 2</h5>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="course-card pl-3 py-1">ฝึกประสบการณ์วิชาชีพ</li>
+                                            <li class="course-card pl-3 py-1">โครงงานวิศวกรรมคอมพิวเตอร์</li>
+                                            <li class="course-card pl-3 py-1">สัมมนา</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specializations -->
+    <section id="specializations" class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold mb-4">สาขาย่อย</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
+            <p class="text-gray-600 max-w-3xl mx-auto">นักศึกษาสามารถเลือกเรียนวิชาเลือกเพื่อเจาะลึกในสาขาย่อยที่สนใจในปีการศึกษาที่ 3 และ 4</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                <div class="h-48 bg-gradient-to-r from-blue-500 to-blue-700 flex items-center justify-center">
+                    <i class="fas fa-microchip text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3">ระบบฝังตัวและ IoT</h3>
+                    <p class="text-gray-600 mb-4">เรียนรู้การออกแบบและพัฒนาระบบฝังตัว อุปกรณ์ IoT และการเชื่อมต่อกับระบบคลาวด์</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">ไมโครคอนโทรลเลอร์</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">RTOS</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">เซ็นเซอร์</span>
+                    </div>
+                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
+                        ดูรายวิชา <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                <div class="h-48 bg-gradient-to-r from-purple-500 to-purple-700 flex items-center justify-center">
+                    <i class="fas fa-lock text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3">ความมั่นคงปลอดภัยไซเบอร์</h3>
+                    <p class="text-gray-600 mb-4">ศึกษาเทคนิคการป้องกันระบบเครือข่าย การทดสอบเจาะระบบ และการจัดการความเสี่ยง</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Ethical Hacking</span>
+                        <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Cryptography</span>
+                        <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Forensics</span>
+                    </div>
+                    <a href="#" class="text-purple-600 font-medium hover:text-purple-800 flex items-center">
+                        ดูรายวิชา <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                <div class="h-48 bg-gradient-to-r from-green-500 to-green-700 flex items-center justify-center">
+                    <i class="fas fa-brain text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3">ปัญญาประดิษฐ์และวิทยาการข้อมูล</h3>
+                    <p class="text-gray-600 mb-4">พัฒนาโมเดลการเรียนรู้ของเครื่อง การประมวลผลภาษาธรรมชาติ และระบบแนะนำอัตโนมัติ</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Machine Learning</span>
+                        <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Deep Learning</span>
+                        <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Data Mining</span>
+                    </div>
+                    <a href="#" class="text-green-600 font-medium hover:text-green-800 flex items-center">
+                        ดูรายวิชา <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Opportunities -->
+    <section id="careers" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">โอกาสทางอาชีพ</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">บัณฑิตของเราสามารถทำงานในตำแหน่งต่างๆ ในอุตสาหกรรมเทคโนโลยีและอื่นๆ</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-white p-6 rounded-lg shadow-sm flex items-start">
+                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-code text-blue-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-2">วิศวกรซอฟต์แวร์</h3>
+                        <p class="text-gray-600 text-sm">ออกแบบและพัฒนาระบบซอฟต์แวร์สำหรับแอปพลิเคชันต่างๆ</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm flex items-start">
+                    <div class="bg-purple-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-network-wired text-purple-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-2">วิศวกรเครือข่าย</h3>
+                        <p class="text-gray-600 text-sm">ออกแบบและดูแลระบบเครือข่ายคอมพิวเตอร์</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm flex items-start">
+                    <div class="bg-green-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-shield-alt text-green-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-2">ผู้เชี่ยวชาญความมั่นคงปลอดภัย</h3>
+                        <p class="text-gray-600 text-sm">ประเมินความเสี่ยงและปกป้องระบบจากภัยคุกคามทางไซเบอร์</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm flex items-start">
+                    <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-robot text-yellow-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-2">วิศวกรปัญญาประดิษฐ์</h3>
+                        <p class="text-gray-600 text-sm">พัฒนาและปรับใช้โมเดลการเรียนรู้ของเครื่อง</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm flex items-start">
+                    <div class="bg-red-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-microchip text-red-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-2">วิศวกรระบบฝังตัว</h3>
+                        <p class="text-gray-600 text-sm">ออกแบบและพัฒนาซอฟต์แวร์สำหรับอุปกรณ์อิเล็กทรอนิกส์</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm flex items-start">
+                    <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-database text-indigo-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-2">วิศวกรข้อมูล</h3>
+                        <p class="text-gray-600 text-sm">ออกแบบระบบจัดการข้อมูลขนาดใหญ่</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm flex items-start">
+                    <div class="bg-pink-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-cloud text-pink-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-2">วิศวกรคลาวด์</h3>
+                        <p class="text-gray-600 text-sm">ออกแบบและจัดการโครงสร้างพื้นฐานระบบคลาวด์</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm flex items-start">
+                    <div class="bg-gray-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-user-tie text-gray-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-2">ที่ปรึกษาด้านเทคโนโลยี</h3>
+                        <p class="text-gray-600 text-sm">ให้คำแนะนำองค์กรเกี่ยวกับการนำเทคโนโลยีไปใช้</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4">
+                    <h3 class="font-bold text-lg">บริษัทที่บัณฑิตของเราได้ทำงาน</h3>
+                </div>
+                <div class="p-6">
+                    <div class="flex flex-wrap items-center justify-center gap-8">
+                        <img src="https://via.placeholder.com/120x60?text=Company+1" alt="Company Logo" class="h-12 opacity-70 hover:opacity-100 transition">
+                        <img src="https://via.placeholder.com/120x60?text=Company+2" alt="Company Logo" class="h-12 opacity-70 hover:opacity-100 transition">
+                        <img src="https://via.placeholder.com/120x60?text=Company+3" alt="Company Logo" class="h-12 opacity-70 hover:opacity-100 transition">
+                        <img src="https://via.placeholder.com/120x60?text=Company+4" alt="Company Logo" class="h-12 opacity-70 hover:opacity-100 transition">
+                        <img src="https://via.placeholder.com/120x60?text=Company+5" alt="Company Logo" class="h-12 opacity-70 hover:opacity-100 transition">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission -->
+    <section id="admission" class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold mb-4">การรับสมัคร</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
+            <p class="text-gray-600 max-w-3xl mx-auto">ข้อมูลเกี่ยวกับเกณฑ์การรับสมัครและขั้นตอนการสมัครเข้าศึกษาในหลักสูตรวิศวกรรมคอมพิวเตอร์บัณฑิต</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-12">
+            <div>
+                <h3 class="text-2xl font-bold mb-6">คุณสมบัติผู้สมัคร</h3>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
+                    <div class="border-b border-gray-200">
+                        <button class="flex justify-between items-center w-full p-6 text-left focus:outline-none" id="admission-requirement-button">
+                            <span class="font-medium">คุณสมบัติทั่วไป</span>
+                            <i class="fas fa-chevron-down transition-transform duration-300" id="admission-requirement-chevron"></i>
+                        </button>
+                        <div class="px-6 pb-6 hidden" id="admission-requirement-content">
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                                    <span>สำเร็จการศึกษาชั้นมัธยมศึกษาปีที่ 6 หรือเทียบเท่า</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                                    <span>มีผลการเรียนเฉลี่ยสะสม (GPAX) ไม่ต่ำกว่า 2.50</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                                    <span>มีผลการเรียนวิชาคณิตศาสตร์และวิทยาศาสตร์ไม่ต่ำกว่า 2.75</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                                    <span>ผ่านการทดสอบความถนัดทางวิศวกรรม (ถ้ามี)</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
+                    <div class="border-b border-gray-200">
+                        <button class="flex justify-between items-center w-full p-6 text-left focus:outline-none" id="document-requirement-button">
+                            <span class="font-medium">เอกสารที่ต้องเตรียม</span>
+                            <i class="fas fa-chevron-down transition-transform duration-300" id="document-requirement-chevron"></i>
+                        </button>
+                        <div class="px-6 pb-6 hidden" id="document-requirement-content">
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-file-alt text-blue-500 mt-1 mr-3"></i>
+                                    <span>ใบแสดงผลการศึกษา (Transcript)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-id-card text-blue-500 mt-1 mr-3"></i>
+                                    <span>สำเนาบัตรประจำตัวประชาชนหรือสำเนาหนังสือเดินทาง</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-certificate text-blue-500 mt-1 mr-3"></i>
+                                    <span>สำเนาใบเปลี่ยนชื่อ-นามสกุล (ถ้ามี)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-image text-blue-500 mt-1 mr-3"></i>
+                                    <span>รูปถ่ายขนาด 1 นิ้ว จำนวน 2 รูป</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-file-invoice text-blue-500 mt-1 mr-3"></i>
+                                    <span>เอกสารอื่นๆ ตามที่มหาวิทยาลัยกำหนด</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-2xl font-bold mb-6">ขั้นตอนการสมัคร</h3>
+                
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 text-blue-800 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mr-4 mt-1">
+                            1
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1">ตรวจสอบคุณสมบัติ</h4>
+                            <p class="text-gray-600">ตรวจสอบว่าตนเองมีคุณสมบัติตรงตามเกณฑ์การรับสมัคร</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 text-blue-800 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mr-4 mt-1">
+                            2
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1">เตรียมเอกสาร</h4>
+                            <p class="text-gray-600">เตรียมเอกสารให้ครบถ้วนตามที่มหาวิทยาลัยกำหนด</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 text-blue-800 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mr-4 mt-1">
+                            3
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1">สมัครออนไลน์</h4>
+                            <p class="text-gray-600">สมัครผ่านระบบออนไลน์ของมหาวิทยาลัยและอัปโหลดเอกสาร</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 text-blue-800 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mr-4 mt-1">
+                            4
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1">ชำระค่าสมัคร</h4>
+                            <p class="text-gray-600">ชำระค่าสมัครจำนวน 500 บาท ผ่านช่องทางที่กำหนด</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 text-blue-800 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mr-4 mt-1">
+                            5
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1">รอประกาศผล</h4>
+                            <p class="text-gray-600">รอประกาศผลการคัดเลือกผ่านเว็บไซต์มหาวิทยาลัย</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 text-blue-800 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mr-4 mt-1">
+                            6
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1">ยืนยันสิทธิ์</h4>
+                            <p class="text-gray-600">ยืนยันสิทธิ์การเข้าศึกษาตามระยะเวลาที่กำหนด</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 bg-blue-50 p-6 rounded-lg">
+                    <h4 class="font-bold mb-3">ช่วงเวลาการรับสมัคร</h4>
+                    <div class="space-y-3">
+                        <div class="flex justify-between">
+                            <span class="text-gray-700">รอบที่ 1 (โควตา)</span>
+                            <span class="font-medium">1 พ.ย. - 15 ธ.ค. 2566</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-700">รอบที่ 2 (รับตรง)</span>
+                            <span class="font-medium">5 ม.ค. - 28 ก.พ. 2567</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-700">รอบที่ 3 (แอดมิชชัน)</span>
+                            <span class="font-medium">1 เม.ย. - 15 พ.ค. 2567</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-16 text-center">
+            <a href="#" class="inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition transform hover:scale-105">
+                สมัครเรียนตอนนี้
+                <i class="fas fa-arrow-right ml-3"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">คำถามที่พบบ่อย</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden mb-6">
+                    <button class="flex justify-between items-center w-full p-6 text-left focus:outline-none" id="faq1-button">
+                        <span class="font-medium">หลักสูตรนี้แตกต่างจากหลักสูตรวิทยาการคอมพิวเตอร์อย่างไร?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300" id="faq1-chevron"></i>
+                    </button>
+                    <div class="px-6 pb-6 hidden" id="faq1-content">
+                        <p class="text-gray-600">หลักสูตรวิศวกรรมคอมพิวเตอร์เน้นทั้งด้านฮาร์ดแวร์และซอฟต์แวร์ ในขณะที่วิทยาการคอมพิวเตอร์เน้นด้านซอฟต์แวร์เป็นหลัก วิศวกรรมคอมพิวเตอร์จะเรียนลึกเกี่ยวกับระบบคอมพิวเตอร์ วงจรดิจิทัล ระบบฝังตัว และการทำงานระดับล่างของระบบ ในขณะที่วิทยาการคอมพิวเตอร์จะเน้นการพัฒนาซอฟต์แวร์ อัลกอริทึม และโครงสร้างข้อมูลเป็นหลัก</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden mb-6">
+                    <button class="flex justify-between items-center w-full p-6 text-left focus:outline-none" id="faq2-button">
+                        <span class="font-medium">จำเป็นต้องมีพื้นฐานการเขียนโปรแกรมมาก่อนหรือไม่?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300" id="faq2-chevron"></i>
+                    </button>
+                    <div class="px-6 pb-6 hidden" id="faq2-content">
+                        <p class="text-gray-600">ไม่จำเป็นต้องมีพื้นฐานการเขียนโปรแกรมมาก่อน เนื่องจากหลักสูตรจะสอนพื้นฐานการเขียนโปรแกรมตั้งแต่เริ่มต้นในปีการศึกษาแรก อย่างไรก็ตาม หากมีพื้นฐานมาก่อนจะช่วยให้ปรับตัวได้เร็วขึ้น</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden mb-6">
+                    <button class="flex justify-between items-center w-full p-6 text-left focus:outline-none" id="faq3-button">
+                        <span class="font-medium">มีทุนการศึกษาหรือไม่?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300" id="faq3-chevron"></i>
+                    </button>
+                    <div class="px-6 pb-6 hidden" id="faq3-content">
+                        <p class="text-gray-600">มหาวิทยาลัยมีทุนการศึกษาหลายประเภท ทั้งทุนสำหรับผู้มีผลการเรียนดี ทุนสำหรับนักศึกษาที่ขาดแคลนทุนทรัพย์ และทุนจากบริษัท partners นักศึกษาสามารถสอบถามข้อมูลเพิ่มเติมได้ที่งานบริการการศึกษา</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden mb-6">
+                    <button class="flex justify-between items-center w-full p-6 text-left focus:outline-none" id="faq4-button">
+                        <span class="font-medium">สามารถโอนหน่วยกิตจากสถาบันอื่นได้หรือไม่?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300" id="faq4-chevron"></i>
+                    </button>
+                    <div class="px-6 pb-6 hidden" id="faq4-content">
+                        <p class="text-gray-600">สามารถทำเรื่องขอโอนหน่วยกิตได้ โดยต้องเป็นรายวิชาที่มีเนื้อหาและจำนวนหน่วยกิตใกล้เคียงกัน และต้องผ่านการพิจารณาจากคณะกรรมการหลักสูตร การโอนหน่วยกิตจะต้องทำในช่วงเริ่มต้นภาคการศึกษาเท่านั้น</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="flex justify-between items-center w-full p-6 text-left focus:outline-none" id="faq5-button">
+                        <span class="font-medium">มีหอพักภายในมหาวิทยาลัยหรือไม่?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300" id="faq5-chevron"></i>
+                    </button>
+                    <div class="px-6 pb-6 hidden" id="faq5-content">
+                        <p class="text-gray-600">มหาวิทยาลัยมีหอพักนักศึกษาภายในมหาวิทยาลัยและมีหอพักเอกชนรอบบริเวณมหาวิทยาลัยหลายแห่ง นักศึกษาสามารถสอบถามข้อมูลเพิ่มเติมและจองห้องพักล่วงหน้าได้ที่งานกิจการนักศึกษา</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="py-20 bg-gradient-to-r from-blue-900 to-purple-900 text-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">มีคำถามเกี่ยวกับหลักสูตร?</h2>
+            <p class="text-xl text-blue-200 max-w-3xl mx-auto mb-8">ทีมงานของเราพร้อมให้คำปรึกษาและตอบคำถามทุกข้อสงสัยเกี่ยวกับหลักสูตรวิศวกรรมคอมพิวเตอร์บัณฑิต</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="tel:+6621234567" class="bg-white hover:bg-gray-100 text-blue-900 px-8 py-3 rounded-full font-medium transition transform hover:scale-105">
+                    <i class="fas fa-phone-alt mr-2"></i> โทร 02-123-4567
+                </a>
+                <a href="mailto:ce@ssru.ac.th" class="border-2 border-white hover:bg-white hover:bg-opacity-10 text-white px-8 py-3 rounded-full font-medium transition transform hover:scale-105">
+                    <i class="fas fa-envelope mr-2"></i> อีเมล ce@ssru.ac.th
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">วิศวกรรมคอมพิวเตอร์</h3>
+                    <p class="text-gray-400 mb-4">คณะวิศวกรรมศาสตร์และเทคโนโลยีอุตสาหกรรม</p>
+                    <p class="text-gray-400">มหาวิทยาลัยราชภัฏสวนสุนันทา</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ลิงก์ด่วน</h3>
+                    <ul class="space-y-2">
+                        <li><a href="indexv2.html" class="text-gray-400 hover:text-white transition">หน้าแรก</a></li>
+                        <li><a href="program.html" class="text-gray-400 hover:text-white transition">หลักสูตร</a></li>
+                        <li><a href="teacher.html" class="text-gray-400 hover:text-white transition">คณะอาจารย์</a></li>
+                        <li><a href="thesis.html" class="text-gray-400 hover:text-white transition">งานวิจัย</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">สมัครเรียน</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ติดต่อเรา</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <span>1 ถนนอู่ทองนอก เขตดุสิต กรุงเทพมหานคร 10300</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3"></i>
+                            <span>+66 2 123 4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3"></i>
+                            <span>ce@ssru.ac.th</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ติดตามเรา</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-400 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400 mb-2">สมัครรับจดหมายข่าว</p>
+                    <div class="flex">
+                        <input type="email" placeholder="อีเมลของคุณ" class="bg-gray-800 text-white px-4 py-2 rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
+                        <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2566 ภาควิชาวิศวกรรมคอมพิวเตอร์ มร.สส. สงวนลิขสิทธิ์</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">นโยบายความเป็นส่วนตัว</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">ข้อกำหนดการใช้งาน</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">การเข้าถึง</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Program tabs
+        const tabs = document.querySelectorAll('.program-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Scroll to target section
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Accordion functionality
+        function setupAccordion(buttonId, chevronId, contentId) {
+            const button = document.getElementById(buttonId);
+            const chevron = document.getElementById(chevronId);
+            const content = document.getElementById(contentId);
+            
+            button.addEventListener('click', function() {
+                const isExpanded = content.classList.contains('hidden');
+                
+                // Toggle content visibility
+                content.classList.toggle('hidden');
+                
+                // Rotate chevron
+                if (isExpanded) {
+                    chevron.classList.add('rotate-180');
+                } else {
+                    chevron.classList.remove('rotate-180');
+                }
+            });
+        }
+        
+        // Setup accordions
+        setupAccordion('admission-requirement-button', 'admission-requirement-chevron', 'admission-requirement-content');
+        setupAccordion('document-requirement-button', 'document-requirement-chevron', 'document-requirement-content');
+        setupAccordion('faq1-button', 'faq1-chevron', 'faq1-content');
+        setupAccordion('faq2-button', 'faq2-chevron', 'faq2-content');
+        setupAccordion('faq3-button', 'faq3-chevron', 'faq3-content');
+        setupAccordion('faq4-button', 'faq4-chevron', 'faq4-content');
+        setupAccordion('faq5-button', 'faq5-chevron', 'faq5-content');
+
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Set active tab based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.getAttribute('href') === `#${currentSection}`) {
+                    tab.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

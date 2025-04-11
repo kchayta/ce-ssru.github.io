@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คณะอาจารย์ - วิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยราชภัฏสวนสุนันทา</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Sarabun', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .teacher-card {
+            transition: all 0.3s ease;
+        }
+        
+        .teacher-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
+        }
+        
+        .specialty-chip {
+            display: inline-block;
+            background-color: #EFF6FF;
+            color: #3B82F6;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="glass-nav fixed w-full z-50 py-4 px-6 shadow-sm">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://lh3.googleusercontent.com/proxy/qeSkpKtrp_1A_o4-9UQWzYqaIKURcD8nBgzuSMWkVTnZ3cDCeyIx01fzKmRej-4mtlw5_j_YBb5vAXA68ROwVvW0onr0bkaRhPiyEPahYMpdm0Ye00olEWhb--BIau2k68QPXmQQexx6VZywmneXKRLgfV1j61wKjwPQ67I" alt="โลโก้ มร.สส" class="h-12 mr-4">
+                <span class="text-white text-xl font-bold">วิศวกรรมคอมพิวเตอร์</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="indexv2.html" class="text-white hover:text-blue-300 transition">หน้าแรก</a>
+                <div class="relative group">
+                    <button id="menuButton" class="text-white hover:text-blue-300 flex items-center transition">
+                        หลักสูตร <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div id="menuDropdown" class="absolute hidden bg-white rounded-md shadow-lg mt-2 py-2 w-48">
+                        <a href="program.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">ปริญญาตรี</a>
+                        <a href="program.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">ปริญญาโท</a>
+                        <a href="thesis.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">งานวิจัย</a>
+                    </div>
+                </div>
+                <a href="teacher.html" class="text-white hover:text-blue-300 transition">คณะอาจารย์</a>
+                <a href="thesis.html" class="text-white hover:text-blue-300 transition">งานวิจัย</a>
+                <a href="#" class="text-white hover:text-blue-300 transition">สมัครเรียน</a>
+                <a href="contact.html" class="text-white hover:text-blue-300 transition">ติดต่อเรา</a>
+            </div>
+            
+            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden bg-white rounded-lg mt-2 py-2 shadow-xl" id="mobile-menu">
+            <a href="indexv2.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">หน้าแรก</a>
+            <a href="program.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">หลักสูตร</a>
+            <a href="teacher.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">คณะอาจารย์</a>
+            <a href="thesis.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">งานวิจัย</a>
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">สมัครเรียน</a>
+            <a href="contact.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">ติดต่อเรา</a>
+        </div>
+    </nav>
+
+    <!-- Teacher Header -->
+    <section class="pt-32 pb-20 bg-gradient-to-r from-blue-900 to-purple-900 text-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">คณะอาจารย์</h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">คณาจารย์ผู้มีความเชี่ยวชาญและประสบการณ์ในสาขาวิศวกรรมคอมพิวเตอร์</p>
+        </div>
+    </section>
+
+    <!-- Teacher Filter -->
+    <section class="py-12 px-6 max-w-7xl mx-auto">
+        <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+            <h2 class="text-xl font-bold mb-4">ค้นหาอาจารย์</h2>
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="flex-1">
+                    <label for="search" class="block text-sm font-medium text-gray-700 mb-1">ชื่ออาจารย์</label>
+                    <input type="text" id="search" placeholder="ค้นหาด้วยชื่อหรือนามสกุล..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div class="flex-1">
+                    <label for="specialty" class="block text-sm font-medium text-gray-700 mb-1">สาขาวิชา</label>
+                    <select id="specialty" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-indigo-700">
+                        <option value="">ทั้งหมด</option>
+                        <option value="head">หัวหน้าสาขาวิชาวิศวกรรมคอมพิวเตอร์</option>
+                        <option value="comen">อาจารย์สาขาวิชาวิศวกรรมคอมพิวเตอร์</option>
+                        <option value="robot">สาขาวิชาวิศวกรรมหุ่นยนต์</option>
+                        <option value="elec">สาขาวิชาเทคโนโลยีไฟฟ้า</option>
+                        <option value="manage">สาขาวิชาการจัดการวิศวกรรม</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button id="filter-button" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition">
+                        <i class="fas fa-search mr-2"></i> ค้นหา
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teacher List -->
+    <section class="py-8 px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Teacher 1 -->
+            <div class="teacher-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300" data-specialty="head,comen">
+                <div class="h-64 bg-gradient-to-r from-blue-500 to-blue-800 flex items-center justify-center">
+                    <img src="ajying 2025-04-11 155251.png" alt="ผศ.ดร.ขวัญเรือน รัศมี" class="h-40 w-40 rounded-full border-4 border-white object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-1">ผศ.ดร.ขวัญเรือน รัศมี</h3>
+                    <p class="text-blue-600 mb-3">หัวหน้าสาขาวิชาวิศวกรรมคอมพิวเตอร์</p>
+                    
+                    <div class="mb-4">
+                        <span class="specialty-chip">ปัญญาประดิษฐ์</span>
+                        <span class="specialty-chip">วิทยาศาสตร์ข้อมูล</span>
+                        <span class="specialty-chip">การเรียนรู้ของเครื่อง</span>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4 line-clamp-2">ผู้เชี่ยวชาญด้านปัญญาประดิษฐ์และการเรียนรู้ของเครื่อง ด้วยประสบการณ์การวิจัยมากกว่า 15 ปี...</p>
+                    
+                    <a href="teacher-khwanruen.html" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition">
+                        ดูประวัติเพิ่มเติม <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Teacher 2 -->
+            <div class="teacher-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300" data-specialty="comen">
+                <div class="h-64 bg-gradient-to-r from-purple-500 to-purple-800 flex items-center justify-center">
+                    <img src="ajteam 2025-04-11 155258.png" alt="ผศ.ดร.พรภวิษย์ บุญศรีเมือง" class="h-40 w-40 rounded-full border-4 border-white object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-1">ผศ.ดร.พรภวิษย์ บุญศรีเมือง</h3>
+                    <p class="text-purple-600 mb-3">อาจารย์สาขาวิชาวิศวกรรมคอมพิวเตอร์  </p>
+                    
+                    <div class="mb-4">
+                        <span class="specialty-chip">เครือข่ายคอมพิวเตอร์</span>
+                        <span class="specialty-chip">ความมั่นคงปลอดภัย</span>
+                        <span class="specialty-chip">ระบบคลาวด์</span>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4 line-clamp-2">ผู้เชี่ยวชาญด้านเครือข่ายคอมพิวเตอร์และความมั่นคงปลอดภัยไซเบอร์ มีผลงานวิจัยที่ได้รับการตีพิมพ์ในวารสารระดับนานาชาติ...</p>
+                    
+                    <a href="teacher-detail-2.html" class="inline-flex items-center text-purple-600 hover:text-purple-800 font-medium transition">
+                        ดูประวัติเพิ่มเติม <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Teacher 3 -->
+            <div class="teacher-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300" data-specialty="comen">
+                <div class="h-64 bg-gradient-to-r from-green-500 to-green-700 flex items-center justify-center">
+                    <img src="ajtone 2025-04-11 155304.png" alt="ผศ.ดร.รวิ อุตตมธนินทร์" class="h-40 w-40 rounded-full border-4 border-white object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-1">ผศ.ดร.รวิ อุตตมธนินทร์</h3>
+                    <p class="text-green-600 mb-3">อาจารย์สาขาวิชาวิศวกรรมคอมพิวเตอร์  </p>
+                    
+                    <div class="mb-4">
+                        <span class="specialty-chip">วิศวกรรมซอฟต์แวร์</span>
+                        <span class="specialty-chip">การพัฒนาระบบ</span>
+                        <span class="specialty-chip">DevOps</span>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4 line-clamp-2">ผู้เชี่ยวชาญด้านวิศวกรรมซอฟต์แวร์และกระบวนการพัฒนาซอฟต์แวร์แบบ Agile มีประสบการณ์ทำงานในบริษัทเทคโนโลยีชั้นนำ...</p>
+                    
+                    <a href="teacher-detail-3.html" class="inline-flex items-center text-green-600 hover:text-green-800 font-medium transition">
+                        ดูประวัติเพิ่มเติม <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Teacher 4 -->
+            <div class="teacher-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300" data-specialty="comen">
+                <div class="h-64 bg-gradient-to-r from-yellow-500 to-yellow-700 flex items-center justify-center">
+                    <img src="ajkant 2025-04-11 155312.png" alt="อาจารย์ กานต์ เจริญจิตร" class="h-40 w-40 rounded-full border-4 border-white object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-1">อาจารย์ กานต์ เจริญจิตร</h3>
+                    <p class="text-yellow-600 mb-3">อาจารย์สาขาวิชาวิศวกรรมคอมพิวเตอร์  </p>
+                    <div class="mb-4">
+                        <span class="specialty-chip">ปัญญาประดิษฐ์</span>
+                        <span class="specialty-chip">การประมวลผลภาพ</span>
+                        <span class="specialty-chip">การเรียนรู้เชิงลึก</span>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4 line-clamp-2">ผู้เชี่ยวชาญด้านการประมวลผลภาพด้วยคอมพิวเตอร์และการเรียนรู้เชิงลึก มีผลงานวิจัยที่ได้รับรางวัลในระดับนานาชาติ...</p>
+                    
+                    <a href="teacher-detail-4.html" class="inline-flex items-center text-yellow-600 hover:text-yellow-800 font-medium transition">
+                        ดูประวัติเพิ่มเติม <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Teacher 5 -->
+            <div class="teacher-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300" data-specialty="comen,robot">
+                <div class="h-64 bg-gradient-to-r from-red-500 to-red-900 flex items-center justify-center">
+                    <img src="ajzack 2025-04-11 155530.png" alt="ผศ.ดร.เศรษฐกาล โปร่งนุช" class="h-40 w-40 rounded-full border-4 border-white object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-1">ผศ.ดร.เศรษฐกาล โปร่งนุช</h3>
+                    <p class="text-red-600 mb-3">สาขาวิชาวิศวกรรมหุ่นยนต์  </p>
+                    
+                    <div class="mb-4">
+                        <span class="specialty-chip">ความมั่นคงปลอดภัย</span>
+                        <span class="specialty-chip">บล็อกเชน</span>
+                        <span class="specialty-chip">การเข้ารหัส</span>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4 line-clamp-2">ผู้เชี่ยวชาญด้านความมั่นคงปลอดภัยไซเบอร์และเทคโนโลยีบล็อกเชน มีประสบการณ์เป็นที่ปรึกษาให้กับหน่วยงานรัฐและเอกชน...</p>
+                    
+                    <a href="teacher-detail-5.html" class="inline-flex items-center text-red-600 hover:text-red-800 font-medium transition">
+                        ดูประวัติเพิ่มเติม <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Teacher 6 -->
+            <div class="teacher-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300" data-specialty="elec">
+                <div class="h-64 bg-gradient-to-r from-blue-500 to-indigo-800 flex items-center justify-center">
+                    <img src="ajtachanon 2025-04-11 155536.png" alt="อาจารย์ ดร.ธัชนนท์  ชุ่มแอ่น" class="h-40 w-40 rounded-full border-4 border-white object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-1">อาจารย์ ดร.ธัชนนท์  ชุ่มแอ่น</h3>
+                    <p class="text-blue-600 mb-3">สาขาวิชาเทคโนโลยีไฟฟ้า </p>
+                    
+                    <div class="mb-4">
+                        <span class="specialty-chip">วิศวกรรมซอฟต์แวร์</span>
+                        <span class="specialty-chip">วิทยาศาสตร์ข้อมูล</span>
+                        <span class="specialty-chip">การวิเคราะห์ข้อมูล</span>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4 line-clamp-2">ผู้เชี่ยวชาญด้านการวิเคราะห์ข้อมูลขนาดใหญ่และระบบฐานข้อมูล มีประสบการณ์การสอนมากว่า 10 ปี...</p>
+                    
+                    <a href="teacher-detail-6.html" class="inline-flex items-center text-blue-600 hover:text-indigo-800 font-medium transition">
+                        ดูประวัติเพิ่มเติม <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Teacher 7 -->
+            <div class="teacher-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300" data-specialty="manage">
+                <div class="h-64 bg-gradient-to-r from-yellow-500 to-orange-700 flex items-center justify-center">
+                    <img src="ajpae 2025-04-11 155542.png" alt="อาจารย์ ดร.พงศ์ระพี แก้วไทรฮะ" class="h-40 w-40 rounded-full border-4 border-white object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-1">อาจารย์ ดร.พงศ์ระพี แก้วไทรฮะ</h3>
+                    <p class="text-orange-600 mb-3">สาขาวิชาการจัดการวิศวกรรม</p>
+                    
+                    <div class="mb-4">
+                        <span class="specialty-chip">วิศวกรรมซอฟต์แวร์</span>
+                        <span class="specialty-chip">วิทยาศาสตร์ข้อมูล</span>
+                        <span class="specialty-chip">การวิเคราะห์ข้อมูล</span>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4 line-clamp-2">ผู้เชี่ยวชาญด้านการวิเคราะห์ข้อมูลขนาดใหญ่และระบบฐานข้อมูล มีประสบการณ์การสอนมากว่า 10 ปี...</p>
+                    
+                    <a href="teacher-detail-6.html" class="inline-flex items-center text-orange-600 hover:text-red-800 font-medium transition">
+                        ดูประวัติเพิ่มเติม <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Teacher 8 -->
+            <div class="teacher-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300" data-specialty="elec">
+                <div class="h-64 bg-gradient-to-r from-yellow-500 to-green-700 flex items-center justify-center">
+                    <img src="ajnarong 2025-04-11 155707.png" alt="อาจารย์ณรงค์ ณรงค์รัตน์" class="h-40 w-40 rounded-full border-4 border-white object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-1">อาจารย์ณรงค์ ณรงค์รัตน์</h3>
+                    <p class="text-green-600 mb-3">สาขาวิชาเทคโนโลยีไฟฟ้า </p>
+                    
+                    <div class="mb-4">
+                        <span class="specialty-chip">วิศวกรรมซอฟต์แวร์</span>
+                        <span class="specialty-chip">วิทยาศาสตร์ข้อมูล</span>
+                        <span class="specialty-chip">การวิเคราะห์ข้อมูล</span>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4 line-clamp-2">ผู้เชี่ยวชาญด้านการวิเคราะห์ข้อมูลขนาดใหญ่และระบบฐานข้อมูล มีประสบการณ์การสอนมากว่า 10 ปี...</p>
+                    
+                    <a href="teacher-detail-6.html" class="inline-flex items-center text-yellow-600 hover:text-green-800 font-medium transition">
+                        ดูประวัติเพิ่มเติม <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Teacher 9 -->
+            <div class="teacher-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300" data-specialty="manage">
+                <div class="h-64 bg-gradient-to-r from-blue-500 to-violet-800 flex items-center justify-center">
+                    <img src="ajtam 2025-04-11 155715.png" alt="อาจารย์ภูภัศ ปภาณ์ณภาภูมิษ์" class="h-40 w-40 rounded-full border-4 border-white object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-1">อาจารย์ภูภัศ ปภาณ์ณภาภูมิษ์</h3>
+                    <p class="text-violet-600 mb-3">สาขาวิชาการจัดการวิศวกรรม</p>
+                    
+                    <div class="mb-4">
+                        <span class="specialty-chip">วิศวกรรมซอฟต์แวร์</span>
+                        <span class="specialty-chip">วิทยาศาสตร์ข้อมูล</span>
+                        <span class="specialty-chip">การวิเคราะห์ข้อมูล</span>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4 line-clamp-2">ผู้เชี่ยวชาญด้านการวิเคราะห์ข้อมูลขนาดใหญ่และระบบฐานข้อมูล มีประสบการณ์การสอนมากว่า 10 ปี...</p>
+                    
+                    <a href="teacher-detail-6.html" class="inline-flex items-center text-blue-600 hover:text-violet-800 font-medium transition">
+                        ดูประวัติเพิ่มเติม <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="mt-12 flex justify-center">
+            <nav class="inline-flex rounded-md shadow">
+                <a href="#" class="px-4 py-2 rounded-l-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+                <a href="#" class="px-4 py-2 border-t border-b border-gray-300 bg-blue-50 text-blue-600 font-medium">1</a>
+                <a href="#" class="px-4 py-2 border-t border-b border-gray-300 bg-white text-gray-500 hover:bg-gray-50">2</a>
+                <a href="#" class="px-4 py-2 border-t border-b border-gray-300 bg-white text-gray-500 hover:bg-gray-50">3</a>
+                <a href="#" class="px-4 py-2 rounded-r-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">วิศวกรรมคอมพิวเตอร์</h3>
+                    <p class="text-gray-400 mb-4">คณะวิศวกรรมศาสตร์และเทคโนโลยีอุตสาหกรรม</p>
+                    <p class="text-gray-400">มหาวิทยาลัยราชภัฏสวนสุนันทา</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ลิงก์ด่วน</h3>
+                    <ul class="space-y-2">
+                        <li><a href="indexv2.html" class="text-gray-400 hover:text-white transition">หน้าแรก</a></li>
+                        <li><a href="program.html" class="text-gray-400 hover:text-white transition">หลักสูตร</a></li>
+                        <li><a href="teacher.html" class="text-gray-400 hover:text-white transition">คณะอาจารย์</a></li>
+                        <li><a href="thesis.html" class="text-gray-400 hover:text-white transition">งานวิจัย</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">สมัครเรียน</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ติดต่อเรา</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <span>1 ถนนอู่ทองนอก เขตดุสิต กรุงเทพมหานคร 10300</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3"></i>
+                            <span>+66 2 123 4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3"></i>
+                            <span>ce@ssru.ac.th</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ติดตามเรา</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-400 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400 mb-2">สมัครรับจดหมายข่าว</p>
+                    <div class="flex">
+                        <input type="email" placeholder="อีเมลของคุณ" class="bg-gray-800 text-white px-4 py-2 rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
+                        <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2566 ภาควิชาวิศวกรรมคอมพิวเตอร์ มร.สส. สงวนลิขสิทธิ์</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">นโยบายความเป็นส่วนตัว</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">ข้อกำหนดการใช้งาน</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">การเข้าถึง</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Button -->
+    <button id="chatbot-toggle" class="fixed bottom-8 right-8 w-16 h-16 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg focus:outline-none">
+        <i class="fas fa-robot text-2xl"></i>
+    </button>
+
+    <!-- Chatbot Window -->
+    <div id="chatbot-window" class="hidden fixed bottom-24 right-8 w-80 bg-white rounded-xl shadow-xl overflow-hidden">
+        <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4">
+            <div class="flex justify-between items-center">
+                <h3 class="font-bold">ผู้ช่วยภาควิชา</h3>
+                <button id="chatbot-close" class="text-white focus:outline-none">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="h-64 p-4 overflow-y-auto" id="chatbot-messages">
+            <div class="mb-4">
+                <div class="bg-gray-100 rounded-lg p-3 inline-block max-w-xs">
+                    <p>สวัสดี! ฉันคือผู้ช่วยเสมือนของภาควิชา ฉันสามารถช่วยอะไรคุณได้บ้างวันนี้?</p>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t">
+            <div class="flex">
+                <input type="text" placeholder="พิมพ์ข้อความของคุณ..." class="flex-1 border rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button class="bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-700 transition">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Chatbot toggle
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const chatbotClose = document.getElementById('chatbot-close');
+
+        chatbotToggle.addEventListener('click', function() {
+            chatbotWindow.classList.toggle('hidden');
+        });
+
+        chatbotClose.addEventListener('click', function() {
+            chatbotWindow.classList.add('hidden');
+        });
+
+        // Teacher filter functionality
+        document.getElementById('filter-button').addEventListener('click', function() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const specialty = document.getElementById('specialty').value;
+            const teacherCards = document.querySelectorAll('.teacher-card');
+            
+            teacherCards.forEach(card => {
+                const name = card.querySelector('h3').textContent.toLowerCase();
+                const specialties = card.dataset.specialty.split(',');
+                
+                const nameMatch = name.includes(searchTerm);
+                const specialtyMatch = specialty === '' || specialties.includes(specialty);
+                
+                if (nameMatch && specialtyMatch) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Dropdown menu functionality
+        const menuButton = document.getElementById('menuButton');
+        const menuDropdown = document.getElementById('menuDropdown');
+        let isMenuOpen = false;
+
+        menuButton.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                menuDropdown.classList.remove('hidden');
+            } else {
+                menuDropdown.classList.add('hidden');
+            }
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!menuButton.contains(event.target) && !menuDropdown.contains(event.target)) {
+                menuDropdown.classList.add('hidden');
+                isMenuOpen = false;
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
